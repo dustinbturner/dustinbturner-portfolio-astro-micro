@@ -1,4 +1,5 @@
 import type { Metadata, Site, Socials } from "@types";
+import React from 'react';
 
 export const SITE: Site = {
   TITLE: "Dustin Turner",
@@ -38,3 +39,27 @@ export const SOCIALS: Socials = [
     HREF: "https://www.kaggle.com/dustinbturner",
   },
 ];
+
+import katex from 'katex';
+import 'katex/dist/katex.min.css'; // Import KaTeX CSS
+
+interface LatexRendererProps {
+  formula: string;
+}
+
+export function LatexRenderer({ formula }: LatexRendererProps) {
+  const html = katex.renderToString(formula, {
+    throwOnError: false,
+    displayMode: true,
+  });
+
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+}
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      div: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+    }
+  }
+}
