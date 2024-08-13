@@ -2,6 +2,8 @@
 import "../styles/global.css";
 import { ViewTransitions } from "astro:transitions";
 
+import SpeedInsights from "@vercel/speed-insights/astro";
+
 import "@fontsource/geist-sans";
 import "@fontsource/geist-mono";
 
@@ -53,7 +55,7 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 <script is:inline src="/pagefind/pagefind-ui.js"></script>
 
 <ViewTransitions />
-
+<SpeedInsights />
 <script is:inline>
   function init() {
     preloadTheme();
