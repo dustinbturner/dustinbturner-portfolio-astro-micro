@@ -4,7 +4,7 @@ export const SITE: Site = {
   TITLE: "Dustin Turner",
   DESCRIPTION: "Dustin Turner is a machine learning software engineer with a passion for building well-designed products that help people live better lives.",
   EMAIL: "dustin@dustinturner.com",
-  NUM_POSTS_ON_HOMEPAGE: 5,
+  NUM_POSTS_ON_HOMEPAGE: 3,
   NUM_PROJECTS_ON_HOMEPAGE: 3,
 };
 
@@ -26,15 +26,15 @@ export const PROJECTS: Metadata = {
 
 export const SOCIALS: Socials = [
   {
-    NAME: "X (formerly Twitter)",
-    HREF: "https://twitter.com/boogerbuttcheeks",
+    NAME: "Twitter",
+    HREF: "https://twitter.com/dustinbturner",
   },
   {
     NAME: "GitHub",
-    HREF: "https://github.com/trevortylerlee",
+    HREF: "https://github.com/dustinbturner",
   },
   {
-    NAME: "LinkedIn",
-    HREF: "https://www.linkedin.com/in/trevortylerlee",
+    NAME: "Kaggle",
+    HREF: "https://www.kaggle.com/dustinbturner",
   },
 ];
