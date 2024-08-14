@@ -1,0 +1,55 @@
+---
+import { cn } from "@lib/utils";
+import fs from "node:fs/promises";
+import path from "node:path";
+
+type Props = {
+  className?: string;
+};
+
+const { className } = Astro.props;
+
+// Read logo files from the public/logos directory
+const logoDir = path.join(process.cwd(), "public", "logos");
+const logoFiles = await fs.readdir(logoDir);
+
+// Filter for image files and create logo objects
+const logos = logoFiles
+  .filter((file) => /\.(svg|png|jpg|jpeg|webp)$/i.test(file))
+  .map((file) => ({
+    src: `/logos/${file}`,
+    alt: path.parse(file).name,
+  }));
+---
+
+<div
+  class={cn(
+    "relative mx-auto mt-12 overflow-hidden overflow-x-hidden py-2",
+    className,
+  )}
+>
+  <div class="grid w-full justify-between">
+    <div class="absolute inset-0 left-0 z-10 w-44"></div>
+    <div class="absolute inset-0 right-0 z-10 w-44"></div>
+  </div>
+  <div
+    class="animate-marquee relative mb-12 flex items-center gap-12 whitespace-nowrap"
+  >
+    {logos.map((logo) => <img class="h-8" src={logo.src} alt={logo.alt} />)}
+    {logos.map((logo) => <img class="h-8" src={logo.src} alt={logo.alt} />)}
+  </div>
+</div>
+
+<style>
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+</style>
